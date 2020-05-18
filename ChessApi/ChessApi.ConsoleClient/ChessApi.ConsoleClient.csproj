@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DDD.Core\DDD.Core.Application\DDD.Core.Application.csproj" />
+    <ProjectReference Include="..\..\DDD.Core\DDD.Core\DDD.Core.csproj" />
+    <ProjectReference Include="..\..\Minor.Miffy\Minor.Miffy.RabbitMQBus\Minor.Miffy.RabbitMQBus.csproj" />
+    <ProjectReference Include="..\..\Minor.Miffy\Minor.Miffy\Minor.Miffy.csproj" />
+    <ProjectReference Include="..\ChessApi.Domain\ChessApi.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
