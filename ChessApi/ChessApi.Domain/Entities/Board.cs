@@ -23,7 +23,7 @@ namespace ChessApi.Domain.Entities
         }
 
 
-        public bool IsEmpty(Square square)
+        public bool IsEmptyAt(Square square)
         {
             return _pieces[rankIndex(square), fileIndex(square)] == null;
         }
@@ -49,14 +49,14 @@ namespace ChessApi.Domain.Entities
 
 
 
-        public bool IsOccupied(Square square)
+        public bool IsOccupiedAt(Square square)
         {
-            return !IsEmpty(square);
+            return !IsEmptyAt(square);
         }
 
-        public bool IsOccupiedByPiece(Square square, PieceCode pieceCode)
+        public bool HasThisPieceOn(Square square, PieceCode pieceCode)
         {
-            return !IsEmpty(square) && GetPieceOn(square).Code == pieceCode;
+            return !IsEmptyAt(square) && GetPieceOn(square).Code == pieceCode;
         }
 
 

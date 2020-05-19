@@ -7,16 +7,16 @@ namespace ChessApi.Domain.ChessRules
 {
     public class PieceMustActuallyMove : BusinessRule
     {
-        private readonly Move _move;
+        private readonly Move move;
 
         public PieceMustActuallyMove(Move move)
         {
-            _move = move;
+            this.move = move;
         }
 
         public override IEnumerable<BusinessRuleViolation> CheckRule()
         {
-            if (_move.StartSquare == _move.DestinationSquare)
+            if (move.StartSquare == move.DestinationSquare)
             {
                 yield return new BusinessRuleViolation("The start square cannot be the same as the destination square.");
             }

@@ -7,28 +7,28 @@ namespace ChessApi.Domain.ChessRules
 {
     public class MoveIsValidForPiece : BusinessRule
     {
-        private readonly Board _board;
-        private readonly Move _move;
+        private readonly Board board;
+        private readonly Move move;
 
         public MoveIsValidForPiece(Board board, Move move)
         {
-            _board = board;
-            _move = move;
+            this.board = board;
+            this.move = move;
         }
 
         public override IEnumerable<BusinessRuleViolation> CheckRule()
         {
-            if (_board.IsEmpty(_move.StartSquare))
+            if (board.IsEmptyAt(move.StartSquare))
             {
-                yield return new BusinessRuleViolation($"There is no piece on {_move.StartSquare}.");
+                yield return new BusinessRuleViolation($"There is no piece on {move.StartSquare}.");
             }
             else
             {
-                Piece piece = _board.GetPieceOn(_move.StartSquare);
+                Piece piece = board.GetPieceOn(move.StartSquare);
 
-                if (!piece.IsValidMove(_move))
+                if (!piece.IsValidMove(move))
                 {
-                    yield return new BusinessRuleViolation($"A {piece} cannot move from {_move.StartSquare} to {_move.DestinationSquare}.");
+                    yield return new BusinessRuleViolation($"A {piece} cannot move from {move.StartSquare} to {move.DestinationSquare}.");
                 }
                 yield break;
             }

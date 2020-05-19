@@ -15,9 +15,9 @@ namespace ChessApi.Domain.Test.Entities
         {
             Board target = new Board(1);
 
-            Assert.IsTrue(target.IsEmpty("a1"));
-            Assert.IsTrue(target.IsEmpty("h8"));
-            Assert.IsTrue(target.IsEmpty("c3"));
+            Assert.IsTrue(target.IsEmptyAt("a1"));
+            Assert.IsTrue(target.IsEmptyAt("h8"));
+            Assert.IsTrue(target.IsEmptyAt("c3"));
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace ChessApi.Domain.Test.Entities
             Piece rook = new Rook(Colour.White);
             board.PutPieceOn("a1", rook);
 
-            bool result = board.IsEmpty("a1");
+            bool result = board.IsEmptyAt("a1");
 
             Assert.AreEqual(false, result);
         }
@@ -84,7 +84,7 @@ namespace ChessApi.Domain.Test.Entities
 
             board.RemovePieceFrom("h1");
 
-            Assert.IsTrue(board.IsEmpty("h1"));
+            Assert.IsTrue(board.IsEmptyAt("h1"));
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace ChessApi.Domain.Test.Entities
             Piece rook = new Rook(Colour.Black);
             board.PutPieceOn("h8", rook);
 
-            bool result = board.IsOccupied("h8");
+            bool result = board.IsOccupiedAt("h8");
 
             Assert.AreEqual(true, result);
         }
@@ -117,7 +117,7 @@ namespace ChessApi.Domain.Test.Entities
             Board board = new Board(1);
             Piece rook = new Rook(Colour.Black);
 
-            bool result = board.IsOccupied("h8");
+            bool result = board.IsOccupiedAt("h8");
 
             Assert.AreEqual(false, result);
         }
@@ -129,7 +129,7 @@ namespace ChessApi.Domain.Test.Entities
             Piece rook = new Rook(Colour.Black);
             board.PutPieceOn("h8", rook);
 
-            bool result = board.IsOccupiedByPiece("h8", PieceCode.R);
+            bool result = board.HasThisPieceOn("h8", PieceCode.R);
 
             Assert.AreEqual(true, result);
         }
@@ -140,7 +140,7 @@ namespace ChessApi.Domain.Test.Entities
             Board board = new Board(1);
             Piece rook = new Rook(Colour.Black);
 
-            bool result = board.IsOccupiedByPiece("h8", PieceCode.R);
+            bool result = board.HasThisPieceOn("h8", PieceCode.R);
 
             Assert.AreEqual(false, result);
         }
@@ -152,7 +152,7 @@ namespace ChessApi.Domain.Test.Entities
             Piece blackRook = new Rook(Colour.Black);
             board.PutPieceOn("g8", blackRook);
 
-            bool result = board.IsOccupiedByPiece("h8", PieceCode.R);
+            bool result = board.HasThisPieceOn("h8", PieceCode.R);
 
             Assert.AreEqual(false, result);
         }
@@ -167,8 +167,8 @@ namespace ChessApi.Domain.Test.Entities
 
             board.ExecuteMove(move);
 
-            Assert.IsTrue(board.IsEmpty("h8"));
-            Assert.IsTrue(board.IsOccupiedByPiece("e8", blackRook.Code));
+            Assert.IsTrue(board.IsEmptyAt("h8"));
+            Assert.IsTrue(board.HasThisPieceOn("e8", blackRook.Code));
         }
     }
 }

@@ -8,21 +8,21 @@ namespace ChessApi.Domain.ChessRules
 {
     public class PieceMustOccupyStartingSquare : BusinessRule
     {
-        private readonly Board _board;
-        private readonly Move _move;
+        private readonly Board board;
+        private readonly Move move;
 
         public PieceMustOccupyStartingSquare(Board board, Move move)
         {
-            _board = board;
-            _move = move;
+            this.board = board;
+            this.move = move;
         }
 
         public override IEnumerable<BusinessRuleViolation> CheckRule()
         {
-            if (_board.IsOccupied(_move.StartSquare) &&
-                !_board.IsOccupiedByPiece(_move.StartSquare, _move.PieceCode))
+            if (board.IsOccupiedAt(move.StartSquare) &&
+                !board.HasThisPieceOn(move.StartSquare, move.PieceCode))
             {
-                yield return new BusinessRuleViolation($"There is no {_move.PieceCode.GetName()} on {_move.StartSquare}.");
+                yield return new BusinessRuleViolation($"There is no {move.PieceCode.GetName()} on {move.StartSquare}.");
             }
         }
     }

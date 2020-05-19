@@ -32,8 +32,8 @@ namespace ChessApi.Domain.Test.Aggregates
             target.MakeMove(command);
 
             // Then
-            Assert.IsTrue(target.Board.IsEmpty(a1), "rook should not be on a1");
-            Assert.IsTrue(target.Board.IsOccupiedByPiece(a4, rook.Code), "rook should be on a4");
+            Assert.IsTrue(target.Board.IsEmptyAt(a1), "rook should not be on a1");
+            Assert.IsTrue(target.Board.HasThisPieceOn(a4, rook.Code), "rook should be on a4");
         }
 
         [TestMethod]

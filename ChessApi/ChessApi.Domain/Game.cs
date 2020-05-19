@@ -49,7 +49,7 @@ namespace ChessApi.Domain.Aggregates
         #endregion handle commands
 
 
-        #region Execute Events
+        #region execute events
         protected override void When(DomainEvent domainEvent)
         {
             Handle(domainEvent as dynamic);
