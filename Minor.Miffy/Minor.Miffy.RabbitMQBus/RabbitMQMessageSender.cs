@@ -25,7 +25,11 @@ namespace Minor.Miffy
                 props.Timestamp = new AmqpTimestamp(eventMessage.Timestamp);
                 props.Type = eventMessage.EventType ?? "void";
 
-                _channel.BasicPublish(_buscontext.ExchangeName, eventMessage.Topic, props, eventMessage.Body);
+                _channel.BasicPublish(
+                    _buscontext.ExchangeName, 
+                    eventMessage.Topic, 
+                    props, 
+                    new ReadOnlyMemory<byte>(eventMessage.Body));
             });
         }
 

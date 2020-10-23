@@ -37,7 +37,7 @@ namespace Minor.Miffy.RabbitMQBus
 
             _channel.ExchangeDeclare(_buscontext.ExchangeName, ExchangeType.Topic);
             _channel.QueueDeclare(QueueName,
-                    durable: true, exclusive: false, autoDelete: true, arguments: null);
+                    durable: true, exclusive: false, autoDelete: false, arguments: null);
 
             foreach (var topicFilter in TopicFilters)
             {
@@ -78,7 +78,7 @@ namespace Minor.Miffy.RabbitMQBus
                 CorrelationId = guid,
                 Timestamp = e.BasicProperties.Timestamp.UnixTime,
                 EventType = e.BasicProperties.Type,
-                Body = e.Body,
+                Body = e.Body.ToArray(),
             };
         }
 

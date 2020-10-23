@@ -4,6 +4,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Minor.Miffy.RabbitMQBus.Test
@@ -76,7 +77,7 @@ namespace Minor.Miffy.RabbitMQBus.Test
 
             _channelMock.Verify(c => c.ExchangeDeclare(_exchangeName, ExchangeType.Topic,
                                                      It.IsAny<bool>(), It.IsAny<bool>(), null));
-            _channelMock.Verify(c => c.QueueDeclare(_queueName, true, false, true, null));
+            _channelMock.Verify(c => c.QueueDeclare(_queueName, true, false, false, null));
             _channelMock.Verify(c => c.QueueBind(_queueName, _exchangeName, "My.Test.Topic", null));
             _channelMock.Verify(c => c.QueueBind(_queueName, _exchangeName, "My.Test.OtherTopic", null));
         }
@@ -140,16 +141,16 @@ namespace Minor.Miffy.RabbitMQBus.Test
             _propMock.SetupProperty(p => p.Timestamp, timestamp);
             _propMock.SetupProperty(p => p.Type, "MyBank.AccountOpened");
             byte[] body = Encoding.Unicode.GetBytes("{AccountOpened data in Json}");
-
+            var buffer = new ReadOnlyMemory<byte>(body);
             // Act
-            _consumer.HandleBasicDeliver("ctag", 5, false, _exchangeName, _topic, _propMock.Object, body);
+            _consumer.HandleBasicDeliver("ctag", 5, false, _exchangeName, _topic, _propMock.Object, buffer);
 
             // Assert
             Assert.AreEqual(_topic, message.Topic);
             Assert.AreEqual(guid, message.CorrelationId);
             Assert.AreEqual(3_141_592_653, message.Timestamp);
             Assert.AreEqual("MyBank.AccountOpened", message.EventType);
-            Assert.AreEqual(body, message.Body);
+            CollectionAssert.AreEqual(body, message.Body);
         }
 
 
@@ -170,7 +171,7 @@ namespace Minor.Miffy.RabbitMQBus.Test
             Assert.AreEqual(Guid.Empty, message.CorrelationId);
             Assert.AreEqual(0, message.Timestamp);
             Assert.AreEqual(null, message.EventType);
-            Assert.AreEqual(null, message.Body);
+            Assert.IsTrue(message.Body.Length == 0);
         }
 
 
