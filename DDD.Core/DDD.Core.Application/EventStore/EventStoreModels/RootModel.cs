@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DDD.Core.Application.EventStoreModels
 {
-    public class RootModel<TId>
+    public class GameModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public TId Id { get; set; }
+        public long Id { get; set; }
         [ConcurrencyCheck]
         public int Version { get; set; }
         public ICollection<EventModel> Events { get; set; }

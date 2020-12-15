@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Minor.Miffy.RabbitMQBus;
 using RabbitMQ.Client;
 
 namespace Minor.Miffy
 {
     public class RabbitMQMessageSender : IMessageSender
     {
-        private readonly IBusContext<IConnection> _buscontext;
+        private readonly RabbitMQBusContext _buscontext;
         private readonly IModel _channel;
 
-        public RabbitMQMessageSender(IBusContext<IConnection> buscontext)
+        public RabbitMQMessageSender(RabbitMQBusContext buscontext)
         {
             _buscontext = buscontext;
             _channel = _buscontext.Connection.CreateModel();

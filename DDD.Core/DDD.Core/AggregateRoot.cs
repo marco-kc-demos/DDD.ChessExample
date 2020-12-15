@@ -50,11 +50,11 @@ namespace DDD.Core
         /// replaying the list of events specified.
         /// </summary>
         /// <param name="id">The unique Id of the aggregate.</param>
-        /// <param name="events">The events to replay.</param>
-        public AggregateRoot(TId id, IEnumerable<DomainEvent> events) : this(id)
+        /// <param name="eventsToReplay">The events to replay.</param>
+        public AggregateRoot(TId id, IEnumerable<DomainEvent> eventsToReplay) : this(id)
         {
             IsReplaying = true;
-            foreach (DomainEvent evt in events)
+            foreach (DomainEvent evt in eventsToReplay)
             {
                 When(evt);
                 OriginalVersion++;

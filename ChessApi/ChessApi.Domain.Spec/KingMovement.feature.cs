@@ -48,8 +48,8 @@ namespace ChessApi.Domain.Spec
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "King Movement", "    In order to kwow the chess rules\r\n    As a chess player\r\n    I want to know t" +
-                    "he rules for the specific movement of a king", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "King Movement", "    In order to make a valid move\r\n    As a chess player\r\n    I want to know the " +
+                    "rules for the specific movement of a king", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -93,14 +93,14 @@ namespace ChessApi.Domain.Spec
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A king may only move horizontally and vertically")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A king may move one step in any direction")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "King Movement")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        public virtual void AKingMayOnlyMoveHorizontallyAndVertically()
+        public virtual void AKingMayMoveOneStepInAnyDirection()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A king may only move horizontally and vertically", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A king may move one step in any direction", null, new string[] {
                         "mytag"});
 #line 7
 this.ScenarioInitialize(scenarioInfo);
@@ -126,7 +126,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.Given("an empty board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-    testRunner.And("a King that starts on \'d5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("a King that starts on \'f5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
  testRunner.When("It moves", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -165,31 +165,31 @@ this.ScenarioInitialize(scenarioInfo);
                             "6",
                             ".",
                             ".",
-                            "V",
-                            "V",
-                            "V",
                             ".",
                             ".",
+                            "V",
+                            "V",
+                            "V",
                             "."});
                 table1.AddRow(new string[] {
                             "5",
                             ".",
                             ".",
+                            ".",
+                            ".",
                             "V",
                             "K",
                             "V",
-                            ".",
-                            ".",
                             "."});
                 table1.AddRow(new string[] {
                             "4",
                             ".",
                             ".",
-                            "V",
-                            "V",
-                            "V",
                             ".",
                             ".",
+                            "V",
+                            "V",
+                            "V",
                             "."});
                 table1.AddRow(new string[] {
                             "3",

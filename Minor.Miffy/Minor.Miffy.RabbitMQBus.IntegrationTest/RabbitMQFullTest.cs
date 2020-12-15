@@ -21,7 +21,7 @@ namespace Minor.Miffy.RabbitMQBus.IntegrationTest
                     .WithAddress("localhost", 5672)
                     .WithCredentials("guest", "guest");
 
-                using (IBusContext<IConnection> busContext = builder.CreateContext())
+                using (IBusContext busContext = builder.CreateContext())
                 {
                 }
             }
@@ -52,7 +52,7 @@ namespace Minor.Miffy.RabbitMQBus.IntegrationTest
                 .WithAddress("localhost", 5672)
                 .WithCredentials("guest","guest");
 
-            using (IBusContext<IConnection> busContext = builder.CreateContext())
+            using (IBusContext busContext = builder.CreateContext())
             // Act - receiver
             using (IMessageReceiver receiver = busContext.CreateMessageReceiver(
                     queueName: "MVM.PolisService",

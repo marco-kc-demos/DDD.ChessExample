@@ -1,5 +1,5 @@
 ﻿Feature: RookMovement
-    In order to kwow the chess rules
+    In order to make a valid move
     As a chess player
     I want to know the rules for the specific movement of a rook
 

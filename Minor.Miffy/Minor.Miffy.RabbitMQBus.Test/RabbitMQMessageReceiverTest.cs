@@ -23,7 +23,7 @@ namespace Minor.Miffy.RabbitMQBus.Test
         private Mock<IBasicProperties> _propsFromChannelMock;
         private Mock<IModel> _channelMock;
         private Mock<IConnection> _connectionMock;
-        private IBusContext<IConnection> _busContext;
+        private RabbitMQBusContext _busContext;
         private EventingBasicConsumer _consumer;
 
         [TestInitialize]

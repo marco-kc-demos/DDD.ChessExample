@@ -48,8 +48,8 @@ namespace ChessApi.Domain.Spec
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "RookMovement", "    In order to kwow the chess rules\r\n    As a chess player\r\n    I want to know t" +
-                    "he rules for the specific movement of a rook", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "RookMovement", "    In order to make a valid move\r\n    As a chess player\r\n    I want to know the " +
+                    "rules for the specific movement of a rook", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -179,7 +179,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "R",
                             "V",
                             "V",
-                            "V",
+                            ".",
                             "V"});
                 table2.AddRow(new string[] {
                             "4",

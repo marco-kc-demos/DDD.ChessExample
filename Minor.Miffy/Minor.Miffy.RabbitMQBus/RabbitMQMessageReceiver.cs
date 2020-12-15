@@ -8,7 +8,7 @@ namespace Minor.Miffy.RabbitMQBus
 {
     public class RabbitMQMessageReceiver : IMessageReceiver
     {
-        private readonly IBusContext<IConnection> _buscontext;
+        private readonly RabbitMQBusContext _buscontext;
         private IModel _channel;
         private bool _hasStartedReceivingMessages;
         private bool _hasStartHandlingMessages;
@@ -17,7 +17,7 @@ namespace Minor.Miffy.RabbitMQBus
         public string QueueName { get; private set; }
         public IEnumerable<string> TopicFilters { get; private set; }
 
-        public RabbitMQMessageReceiver(IBusContext<IConnection> buscontext, string queueName, IEnumerable<string> topicFilters)
+        public RabbitMQMessageReceiver(RabbitMQBusContext buscontext, string queueName, IEnumerable<string> topicFilters)
         {
             _buscontext = buscontext;
             QueueName = queueName;

@@ -7,7 +7,7 @@ namespace Minor.Miffy.InMemoryBus
     /// <summary>
     /// Each InMemoryContext object creates its own message broker system.
     /// </summary>
-    public class InMemoryContext : IBusContext<MessageBroker>
+    public class InMemoryContext : IBusContext
     {
         public MessageBroker Connection { get; }
         public string ExchangeName { get; }

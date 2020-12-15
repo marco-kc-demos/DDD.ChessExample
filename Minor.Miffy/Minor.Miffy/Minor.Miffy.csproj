@@ -5,6 +5,7 @@
     <Authors>Marco Pil</Authors>
     <Company>Info Support B.V.</Company>
     <Description>Core classes for a wrapper for an Event Message Broker</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

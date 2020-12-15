@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Minor.Miffy
 {
-    public interface IBusContext<TConnection> : IDisposable
+    public interface IBusContext : IDisposable
     {
-        TConnection Connection { get; }
         string ExchangeName { get; }
 
         IMessageSender CreateMessageSender();

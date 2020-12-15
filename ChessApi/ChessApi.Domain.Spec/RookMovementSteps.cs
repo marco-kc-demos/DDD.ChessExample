@@ -45,12 +45,12 @@ namespace ChessApi.Domain.Spec
         [Then(@"It can move to all '(.*)'s and cannot move to all '(.*)'s")]
         public void ThenItCanMoveToAllSAndNotToAllS(string go, string nogo, Table table)
         {
-            int rank = 8;
             foreach(TableRow row in table.Rows)
             {
                 foreach(var file in "abcdefgh")
                 {
                     string expectedResult = row[file.ToString()];
+                    int rank = int.Parse(row[0]);
                     DestinationSquare destination = new DestinationSquare(file, rank);
                     Move move = new Move(_piece.Code, _startSquare, destination);
 
@@ -65,9 +65,7 @@ namespace ChessApi.Domain.Spec
                         Assert.AreEqual(false, actualResult, $"it should not be allowd to go to {file}{rank}");
                     }
                 }
-                rank--;
             }
-
         }
 
     }

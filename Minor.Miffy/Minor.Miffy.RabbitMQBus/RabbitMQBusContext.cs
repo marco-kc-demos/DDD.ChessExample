@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Minor.Miffy.RabbitMQBus
 {
-    public class RabbitMQBusContext : IBusContext<IConnection>
+    public class RabbitMQBusContext : IBusContext
     {
         public IConnection Connection { get; }
         public string ExchangeName { get; }

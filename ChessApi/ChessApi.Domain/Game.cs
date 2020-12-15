@@ -65,6 +65,10 @@ namespace ChessApi.Domain.Aggregates
         {
             Move move = moveMade.MapToMove();
             Board.ExecuteMove(move);
+            //if (!IsReplaying)
+            //{
+            //    StuurRobotAan(move); // Zijeffect op de echte wereld
+            //}
         }
         #endregion Execute Events
     }
